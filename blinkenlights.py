@@ -11,17 +11,19 @@ urls = {
 	1: "https://box.spacewalkpublishing.us/",
 	2: "https://spacewalkpublishing.us/",
 	3: "https://teammaia.us/",
-	4: "http://eval.m45.space/evaluationsui/",	
+	4: "http://eval.m45.space/evaluationsui/",
+	5: "https://pilamacademy.m45.space/",
 }
 while True:
 	t = dt.now()
 	clear()
 	set_all(148,0,211)
-	show()
 	if t.hour > 22 or t.hour < 6:
 		set_brightness(0.04)
 	else:
-		set_brightness(1.0)
+		set_brightness(0.6)
+	show()
+	set_all(0,0,0)
 	for key in urls:
 		start = dt.now()
 		result = requests.get(urls[key])
@@ -31,9 +33,6 @@ while True:
 		elif (finish - start).seconds > 5:
 			set_pixel(key, 255, 100, 0)
 		else:
-			if random() > 0.5:
-				set_pixel(key, 0, 0, 255)
-			else:
-				set_pixel(key, 0, 255, 0)
+			set_pixel(key, 0,0,0)
 		show()			
 	time.sleep(60)
